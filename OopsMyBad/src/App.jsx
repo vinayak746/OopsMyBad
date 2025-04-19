@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Apology from "./pages/Apology";
 import ThankYou from "./pages/ThankYou";
 import Rejected from "./pages/Rejected";
+import Forgiveness from "./components/ForgivenessPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/apology" element={<Apology />} />
       <Route path="/thankyou" element={<ThankYou />} />
       <Route path="/rejected" element={<Rejected />} />
+      <Route path="/forgiveness" element={<Forgiveness />} />
     </Routes>
   );
 }

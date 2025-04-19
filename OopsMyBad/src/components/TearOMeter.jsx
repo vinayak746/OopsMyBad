@@ -7,7 +7,7 @@ export default function TearOMeter() {
   return (
     <div className="flex flex-col items-center mt-10 w-full max-w-md">
       <label className="text-lg font-medium text-gray-700 mb-2">
-        Tear-O-Meter™ 😭 – How Sorry Are You?
+        Tear-O-Meter™ 😭 – How Sorry Are You For Me?
       </label>
       <input
         type="range"
