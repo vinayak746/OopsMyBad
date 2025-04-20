@@ -1,11 +1,8 @@
-// src/pages/Apology.jsx
-export default function Apology() {
+export default function ThankYou() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
-      <h1 className="text-3xl font-bold text-red-600">Thank You</h1>
-      <p className="mt-4 max-w-xl text-center text-gray-700">
-        (Coming soon: emotionally dramatic text and the Tear-O-Meter™)
-      </p>
+    <div className="text-center p-8">
+      <h2 className="text-3xl mb-4 text-green-600">You Forgave Me 😭💖</h2>
+      <p className="text-xl">You're officially the best person ever. 🥹</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 // src/pages/Apology.jsx
 import { useNavigate } from "react-router-dom";
 import TearOMeter from "../components/TearOMeter.jsx";
-import ConfessionForm from "../components/ConfessionForm.jsx";
+import ConfessionDisplay from "../components/ConfessionDisplay.jsx";
 export default function Apology() {
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function Apology() {
       </p>
 
       <TearOMeter />
-      {/* <ConfessionForm /> */}
+      <ConfessionDisplay />
 
       <button
         onClick={() => navigate("/")}

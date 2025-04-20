@@ -1,11 +1,12 @@
-// src/pages/Apology.jsx
-export default function Apology() {
+export default function Rejected() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
-      <h1 className="text-3xl font-bold text-red-600">Why</h1>
-      <p className="mt-4 max-w-xl text-center text-gray-700">
-        (Coming soon: emotionally dramatic text and the Tear-O-Meter™)
-      </p>
+    <div className="text-center p-8 text-red-600">
+      <h2 className="text-4xl mb-4">Ouch. That hurt. 💔</h2>
+      <p className="text-lg">But I respect your decision.</p>
+      <img
+        src="https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif"
+        className="mx-auto mt-6 w-64 rounded-xl"
+      />
     </div>
   );
 }
