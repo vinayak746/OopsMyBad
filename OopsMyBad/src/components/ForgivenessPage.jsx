@@ -1,77 +1,83 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function ForgivenessPage() {
-  const [forgiven, setForgiven] = useState(false);
-  const [clickedNo, setClickedNo] = useState(false);
+  const [decision, setDecision] = useState(null);
+  const [rejectPos, setRejectPos] = useState({ x: 50, y: 50 });
+  const buttonRef = useRef(null);
 
-  const handleForgive = () => {
-    setForgiven(true);
+  const moveButton = () => {
+    const x = Math.floor(Math.random() * 90) + 5;
+    const y = Math.floor(Math.random() * 80) + 10;
+    setRejectPos({ x, y });
   };
 
-  const handleNotForgive = () => {
-    setClickedNo(true);
-  };
+  if (decision === "forgiven") {
+    return (
+      <div className="min-h-screen bg-green-100 flex flex-col justify-center items-center text-center p-10">
+        <h2 className="text-5xl font-bold text-green-700 mb-6">
+          You Are Forgiven ❤️
+        </h2>
+        <p className="text-xl mb-4">
+          Wow… your apology worked. Miracles do happen.
+        </p>
+        <p className="text-lg italic text-gray-700">Go and sin no more 🕊️</p>
+        <button
+          onClick={() => setDecision(null)}
+          className="mt-8 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full"
+        >
+          Back to Choices
+        </button>
+      </div>
+    );
+  }
+
+  if (decision === "rejected") {
+    return (
+      <div className="min-h-screen bg-red-100 flex flex-col justify-center items-center text-center p-10">
+        <h2 className="text-5xl font-bold text-red-600 mb-6">REJECTED 💔</h2>
+        <p className="text-xl mb-4">Oof. Not forgiven. That one hurt.</p>
+        <p className="text-lg italic text-gray-700">Please reconsider… 🥺</p>
+        <button
+          onClick={() => setDecision(null)}
+          className="mt-8 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full"
+        >
+          Reconsider
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-600 text-white">
-      <h1 className="text-4xl font-bold mb-8">
-        I’m Sorry! Please Forgive Me 🙏
-      </h1>
-
-      {!forgiven && !clickedNo ? (
-        <>
-          <p className="text-xl mb-6">
-            I know I messed up, but I’m really trying to fix things. Please,
-            forgive me? 💔
-          </p>
-          <div className="flex gap-6">
-            <button
-              onClick={handleForgive}
-              className="bg-green-500 px-6 py-3 rounded-lg text-white hover:bg-green-600 transition"
-            >
-              I Forgive You 💖
-            </button>
-            <button
-              onClick={handleNotForgive}
-              className="bg-red-500 px-6 py-3 rounded-lg text-white hover:bg-red-600 transition"
-            >
-              Not Yet 🫣
-            </button>
-          </div>
-        </>
-      ) : null}
-
-      {forgiven && (
-        <div className="mt-8 text-2xl">
-          <p>Thank you for forgiving me! You’re a true hero 🦸‍♂️💥</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-pink-200 relative overflow-hidden">
+      <div className="flex flex-col justify-center items-center text-center min-h-screen p-10">
+        <h2 className="text-5xl font-bold mb-10 text-purple-700">
+          Will You Forgive Them?
+        </h2>
+        <div className="flex flex-row gap-6">
           <button
-            onClick={() => setForgiven(false)}
-            className="mt-6 bg-purple-500 px-6 py-3 rounded-lg text-white hover:bg-purple-600 transition"
+            onClick={() => setDecision("forgiven")}
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-xl"
           >
-            Start Over 😅
+            Forgive 💖
           </button>
         </div>
-      )}
+      </div>
 
-      {clickedNo && (
-        <div className="mt-8 text-center">
-          <p className="text-xl">
-            I see you're not ready to forgive me… but here's a meme to cheer you
-            up!
-          </p>
-          <img
-            src="https://media.giphy.com/media/Ju7l5y8p5DTq8/giphy.gif"
-            alt="Not yet forgiven"
-            className="mt-6 rounded-xl"
-          />
-          <button
-            onClick={handleForgive}
-            className="mt-6 bg-yellow-500 px-6 py-3 rounded-lg text-white hover:bg-yellow-600 transition"
-          >
-            Okay, Fine, I Forgive You 😂
-          </button>
-        </div>
-      )}
+      {/* Sneaky Reject Button */}
+      <button
+        ref={buttonRef}
+        onClick={() => setDecision("rejected")}
+        onMouseEnter={moveButton}
+        style={{
+          position: "absolute",
+          top: `${rejectPos.y}%`,
+          left: `${rejectPos.x}%`,
+          transform: "translate(-50%, -50%)",
+        }}
+        className="bg-red-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-200"
+      >
+        Reject 😐
+      </button>
     </div>
   );
 }
