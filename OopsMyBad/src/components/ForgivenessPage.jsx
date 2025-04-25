@@ -74,7 +74,7 @@ export default function ForgivenessPage() {
           left: `${rejectPos.x}%`,
           transform: "translate(-50%, -50%)",
         }}
-        className="bg-red-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-200"
+        className="bg-red-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-200 ease-in-out hover:bg-red-600"
       >
         Reject 😐
       </button>
