@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 export default function ForgivenessPage() {
   const [decision, setDecision] = useState(null);
   const [rejectPos, setRejectPos] = useState({ x: 50, y: 50 });
@@ -12,8 +13,17 @@ export default function ForgivenessPage() {
   };
 
   if (decision === "forgiven") {
+    const [width, height] = useWindowSize();
+
     return (
-      <div className="min-h-screen bg-green-100 flex flex-col justify-center items-center text-center p-10">
+      <div className="min-h-screen bg-green-100 flex flex-col justify-center items-center text-center p-10 relative overflow-hidden">
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={500}
+          recycle={false}
+        />
+
         <h2 className="text-5xl font-bold text-green-700 mb-6">
           You Are Forgiven ❤️
         </h2>
@@ -56,7 +66,7 @@ export default function ForgivenessPage() {
         <div className="flex flex-row gap-6">
           <button
             onClick={() => setDecision("forgiven")}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-xl"
+            className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full text-2xl shadow-lg animate-pulse"
           >
             Forgive 💖
           </button>
@@ -74,7 +84,7 @@ export default function ForgivenessPage() {
           left: `${rejectPos.x}%`,
           transform: "translate(-50%, -50%)",
         }}
-        className="bg-red-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-200 ease-in-out hover:bg-red-600"
+        className="bg-red-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-200 ease-in-out hover:bg-red-600 hover:animate-wiggle"
       >
         Reject 😐
       </button>
